@@ -1,3 +1,4 @@
+//function that compares two objects according to the given property name
 const comparisonByProperty = (propertyName) => {
   return function (object1, object2) {
     var value1 = object1[propertyName];

@@ -1,50 +1,44 @@
-import React, { useEffect, useState } from "react";
-
-import {
-  Row,
-  Col,
-  ListGroup,
-  Image,
-  Form,
-  Button,
-  Card,
-} from "react-bootstrap";
+import React, { useState } from "react";
+import { Row, Col, ListGroup, Button } from "react-bootstrap";
 import TodoItem from "../components/TodoItem";
 import comparisionByProperty from "../utils/comparisionByProperty";
+
 const TodoList = ({ todos, setTodos, inputText, setInputText }) => {
   const [sort, setSort] = useState(false);
+
   const sortHandler = () => {
     setSort(!sort);
   };
 
-  let todofinal = [];
-
+  //check whether to display sorted todo lists or normal todo lists
+  let finalTodos = [];
   if (sort) {
     const sortedList = todos.sort(comparisionByProperty("dateCreated"));
-    todofinal = sortedList;
+    finalTodos = sortedList;
   } else {
-    todofinal = todos;
+    finalTodos = todos;
   }
 
   return (
     <Row>
-      <Col>
+      <Col md={2}>
         <Button onClick={sortHandler} type="submit">
-          Sort By Date
+          Sort
         </Button>
       </Col>
-
-      <ListGroup variant="flush">
-        {todofinal.map((item) => (
-          <TodoItem
-            item={item}
-            setTodos={setTodos}
-            todos={todos}
-            inputText={inputText}
-            setInputText={setInputText}
-          />
-        ))}
-      </ListGroup>
+      <Col md={10}>
+        <ListGroup variant="flush">
+          {finalTodos.map((item) => (
+            <TodoItem
+              item={item}
+              setTodos={setTodos}
+              todos={todos}
+              inputText={inputText}
+              setInputText={setInputText}
+            />
+          ))}
+        </ListGroup>
+      </Col>
     </Row>
   );
 };

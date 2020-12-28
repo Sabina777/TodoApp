@@ -1,3 +1,5 @@
+//function to format date and time
+
 const formatDate = (date) => {
   var hours = date.getHours();
   var minutes = date.getMinutes();
