@@ -10,22 +10,8 @@ import {
   Card,
 } from "react-bootstrap";
 import TodoItem from "../components/TodoItem";
-
+import comparisionByProperty from "../utils/comparisionByProperty";
 const TodoList = ({ todos, setTodos, inputText, setInputText }) => {
-  const comparisonFunctionByPropertyName = (propertyName) => {
-    return function (object1, object2) {
-      var value1 = object1[propertyName];
-      var value2 = object2[propertyName];
-
-      if (value1 < value2) {
-        return 1;
-      } else if (value1 > value2) {
-        return -1;
-      } else {
-        return 0;
-      }
-    };
-  };
   const [sort, setSort] = useState(false);
   const sortHandler = () => {
     setSort(!sort);
@@ -34,9 +20,7 @@ const TodoList = ({ todos, setTodos, inputText, setInputText }) => {
   let todofinal = [];
 
   if (sort) {
-    const sortedList = todos.sort(
-      comparisonFunctionByPropertyName("dateCreated")
-    );
+    const sortedList = todos.sort(comparisionByProperty("dateCreated"));
     todofinal = sortedList;
   } else {
     todofinal = todos;
