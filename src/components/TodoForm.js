@@ -1,10 +1,48 @@
 import React from "react";
 
-const TodoForm = () => {
+import { Row, Col, Form, Button } from "react-bootstrap";
+
+const TodoForm = ({ setInputText, todos, setTodos, inputText }) => {
+  const inputTextHandler = (e) => {
+    console.log(e.target.value);
+    setInputText(e.target.value);
+  };
+
+  const submitTodoHandler = (e) => {
+    e.preventDefault();
+    setTodos([
+      ...todos,
+      {
+        text: inputText,
+        completed: false,
+        id: Math.random() * 1000,
+        dateCreated: new Date(),
+      },
+    ]);
+    console.log(todos);
+    setInputText("");
+  };
   return (
-    <div>
-      <h1>todo form</h1>
-    </div>
+    <Form onSubmit={submitTodoHandler}>
+      <Row>
+        <Col>
+          <Form.Group controlId="todo">
+            <Form.Control
+              type="text"
+              placeholder="Enter new todo"
+              value={inputText}
+              onChange={inputTextHandler}
+            ></Form.Control>
+          </Form.Group>
+        </Col>
+
+        <Col>
+          <Button type="submit" variant="info">
+            Add
+          </Button>
+        </Col>
+      </Row>
+    </Form>
   );
 };
 
