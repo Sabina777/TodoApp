@@ -13,13 +13,9 @@ const Todo = ({ item, setTodos, todos }) => {
         <Col>{item.text}</Col>
 
         <Col>
-          <Row>
-            <Col>
-              <Button type="button" variant="light" onClick={deleteTodoHandler}>
-                <i className="fas fa-trash"></i>
-              </Button>
-            </Col>
-          </Row>
+          <Button type="button" variant="light" onClick={deleteTodoHandler}>
+            <i className="fas fa-trash"></i>
+          </Button>
         </Col>
       </Row>
     </ListGroup.Item>

@@ -35,6 +35,7 @@ const TodoList = ({ todos, setTodos, inputText, setInputText }) => {
               todos={todos}
               inputText={inputText}
               setInputText={setInputText}
+              key={item.dateCreated}
             />
           ))}
         </ListGroup>

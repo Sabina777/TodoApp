@@ -4,7 +4,6 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 
 const TodoForm = ({ setInputText, todos, setTodos, inputText }) => {
   const inputTextHandler = (e) => {
-    console.log(e.target.value);
     setInputText(e.target.value);
   };
 
@@ -19,7 +18,7 @@ const TodoForm = ({ setInputText, todos, setTodos, inputText }) => {
         dateCreated: new Date(),
       },
     ]);
-    console.log(todos);
+
     setInputText("");
   };
   return (
